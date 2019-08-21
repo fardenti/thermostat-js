@@ -61,28 +61,33 @@ Thermostat.prototype.usage = function() {
 
 $(document).ready(function() {
   const thermostat = new Thermostat();
+  function updateTemperature() {
+    $("#temperature").text(thermostat.temperature());
+    $("#temperature").attr("class", thermostat.usage());
+  }
   $("#temperature").text(thermostat.temperature());
 
   $("#temperature-up").on("click", function() {
     thermostat.up();
-    $("#temperature").text(thermostat.temperature());
+    updateTemperature();
   });
   $("#temperature-down").on("click", function() {
     thermostat.down();
     $("#temperature").text(thermostat.temperature());
+    updateTemperature();
   });
   $("#temperature-reset").on("click", function() {
     thermostat.reset();
-    $("#temperature").text(thermostat.temperature());
+    updateTemperature();
   });
-  $("#powersaving-on").on("click", function(){
+  $("#powersaving-on").on("click", function() {
     thermostat.savingModeOn();
-    $("#temperature").text(thermostat.temperature());
-    $("#saving-mode").text("saving mode on")
-  })
-  $("#powersaving-off").on("click", function(){
+    updateTemperature();
+    $("#saving-mode").text("saving mode on");
+  });
+  $("#powersaving-off").on("click", function() {
     thermostat.savingModeOff();
-    $("#temperature").text(thermostat.temperature());
-    $("#saving-mode").text("saving mode off")
-  })
+    updateTemperature();
+    $("#saving-mode").text("saving mode off");
+  });
 });
