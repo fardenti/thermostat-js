@@ -11,9 +11,11 @@ Thermostat.prototype.temperature = function() {
 
 Thermostat.prototype.up = function(number = 1) {
   if (this.savingMode() === true && this._temperature + number > 25) {
+    alert("cannot increase: maximum temperature is 25 degrees");
     throw new Error("cannot increase: maximum temperature is 25 degrees");
     return;
   } else if (this.savingMode() === false && this._temperature + number > 32) {
+    alert("cannot increase: maximum temperature is 32 degrees")
     throw new Error("cannot increase: maximum temperature is 32 degrees");
     return;
   }
@@ -22,7 +24,9 @@ Thermostat.prototype.up = function(number = 1) {
 
 Thermostat.prototype.down = function(number = 1) {
   if (this._temperature - number < 10) {
+    alert("default temperature is 10");
     throw new Error("default temperature is 10");
+    return;
   }
   this._temperature -= number;
 };
@@ -91,3 +95,5 @@ $(document).ready(function() {
     $("#saving-mode").text("saving mode off");
   });
 });
+
+
