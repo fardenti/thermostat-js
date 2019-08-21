@@ -45,9 +45,30 @@ Thermostat.prototype.reset = function() {
 Thermostat.prototype.usage = function() {
   if (this._temperature < 18) {
     return "low-usage";
-  } else if (this._temperature < 25){
-    return 'medium-usage';
+  } else if (this._temperature < 25) {
+    return "medium-usage";
   } else {
-    return 'high-usage';
+    return "high-usage";
   }
 };
+
+// const upBtn = document.getElementById("temperature-up");
+// const downBtn = document.getElementById("temperature-down");
+// const resetBtn = document.getElementById("temperature-reset");
+// const status = document.getElementById("power-saving-status");
+// const pwrOn = document.getElementById("powersaving-on");
+// const pwrOff = document.getElementById("powersaving-off");
+
+$(document).ready(function() {
+  const thermostat = new Thermostat();
+  $("#temperature").text(thermostat.temperature());
+
+  $("#temperature-up").on("click", function() {
+    thermostat.up();
+    $("#temperature").text(thermostat.temperature());
+  });
+  $("#temperature-down").on("click", function() {
+    thermostat.down();
+    $("#temperature").text(thermostat.temperature());
+  });
+});
