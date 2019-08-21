@@ -24,4 +24,11 @@ describe("Thermostat", function() {
       thermostat.down(15);
     }).toThrowError("default temperature is 10");
   });
+  it("sets maximum temperature to 25 degrees if saving mode is on", function() {
+      thermostat.savingModeOn();
+    expect(function() {
+      thermostat.up(20);
+    }).toThrowError("cannot increase: maximum temperature is 25 degrees");
+  });
+
 });
