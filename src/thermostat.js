@@ -71,4 +71,18 @@ $(document).ready(function() {
     thermostat.down();
     $("#temperature").text(thermostat.temperature());
   });
+  $("#temperature-reset").on("click", function() {
+    thermostat.reset();
+    $("#temperature").text(thermostat.temperature());
+  });
+  $("#powersaving-on").on("click", function(){
+    thermostat.savingModeOn();
+    $("#temperature").text(thermostat.temperature());
+    $("#saving-mode").text("saving mode on")
+  })
+  $("#powersaving-off").on("click", function(){
+    thermostat.savingModeOff();
+    $("#temperature").text(thermostat.temperature());
+    $("#saving-mode").text("saving mode off")
+  })
 });
