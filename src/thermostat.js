@@ -19,18 +19,32 @@ Thermostat.prototype.up = function(number = 1) {
   }
   this._temperature += number;
 };
+
 Thermostat.prototype.down = function(number = 1) {
   if (this._temperature - number < 10) {
     throw new Error("default temperature is 10");
   }
   this._temperature--;
 };
+
 Thermostat.prototype.savingModeOn = function() {
   this._savingMode = true;
 };
+
 Thermostat.prototype.savingModeOff = function() {
   this._savingMode = false;
 };
-Thermostat.prototype.savingMode = function() {
-  return this._savingMode;
+
+Thermostat.prototype.reset = function(){
+    this._temperature = 20;
+};
+
+Thermostat.prototype.usage = function(){
+    if (this._temperature < 18){
+        return 'low-usage';
+    } else if (this._temperature < 25){
+        return 'medium-usage';
+    } else {
+        return 'high-usage';
+    }
 };

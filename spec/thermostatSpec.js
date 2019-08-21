@@ -39,4 +39,20 @@ describe("Thermostat", function() {
   it("saving mode is on by default", function() {
     expect(thermostat.savingMode()).toBeTruthy();
   });
+  it("resets the temperature to 20", function(){
+      thermostat.reset();
+    expect(thermostat.temperature()).toEqual(20);
+  });
+  it("returns low energy usage", function(){
+      thermostat.down(11);
+    expect(thermostat.usage()).toEqual('low-usage');
+  });
+  it("returns medium energy usage", function(){
+    expect(thermostat.usage()).toEqual('medium-usage');
+  });
+  it("returns high energy usage", function(){
+      thermostat.savingModeOff();
+    thermostat.up(10);
+  expect(thermostat.usage()).toEqual('high-usage');
+});
 });
