@@ -47,4 +47,12 @@ describe("Thermostat", function() {
     thermostat.down(3);
     expect(thermostat.usage()).toEqual("low-usage");
   });
+  it("medium-usage", function() {
+    expect(thermostat.usage()).toEqual("medium-usage");
+  });
+  it("high-usage", function() {
+    thermostat.savingModeOff();
+    thermostat.up(10);
+    expect(thermostat.usage()).toEqual("high-usage");
+  });
 });
