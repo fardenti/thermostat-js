@@ -37,22 +37,14 @@ describe("Thermostat", function() {
     }).toThrowError("cannot increase: maximum temperature is 32 degrees");
   });
   it("saving mode is on by default", function() {
-    expect(thermostat.savingMode()).toBeTruthy();
+    expect(thermostat.savingMode()).toEqual(true);
   });
-  it("resets the temperature to 20", function(){
-      thermostat.reset();
+  it("resets the temperature to 20", function() {
+    thermostat.reset();
     expect(thermostat.temperature()).toEqual(20);
   });
-  it("returns low energy usage", function(){
-      thermostat.down(11);
-    expect(thermostat.usage()).toEqual('low-usage');
+  it("low-usage", function() {
+    thermostat.down(3);
+    expect(thermostat.usage()).toEqual("low-usage");
   });
-  it("returns medium energy usage", function(){
-    expect(thermostat.usage()).toEqual('medium-usage');
-  });
-  it("returns high energy usage", function(){
-      thermostat.savingModeOff();
-    thermostat.up(10);
-  expect(thermostat.usage()).toEqual('high-usage');
-});
 });
