@@ -5,6 +5,8 @@
 
     $.get(url + token + units, function(data) {
       $('#current-temperature').text(data.main.temp);
+    console.log(data)
+    $('#current-city-name').text(data.name);
     })
 }
 
